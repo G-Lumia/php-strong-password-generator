@@ -8,37 +8,9 @@ Milestone 2
 Verificato il corretto funzionamento del nostro codice, spostiamo la logica in un file functions.php che includeremo poi nella pagina principale
 Milestone 3 (BONUS)
 Invece di visualizzare la password nella index, effettuare un redirect ad una pagina dedicata che tramite $_SESSION recupererà la password da mostrare all’utente. -->
-
-
-<?php
-
-if(isset($_GET['lenght'])){
-    $lenght = $_GET['lenght'];
-}
-else{
-    $lenght = 0;
-}
-
-function randomPassword($lenght) {
-    if((!is_numeric($lenght)))
-    {
-        return "You need to use numbers, you madman";
-    }
-    elseif($lenght > 0){
-        $alphabet = "abcdefghijklmnopqrstuwxyzABCDEFGHIJKLMNOPQRSTUWXYZ0123456789~`!@#$%^&*{}[]()\|/:;<>.?/";
-        $password = [];
-        $alphaLength = strlen($alphabet) - 1;
-        for ($i = 0; $i < $lenght; $i++) {
-            $letter = rand(0, $alphaLength);
-            $password[] = $alphabet[$letter];
-        }
-        return implode($password);
-    }
-    elseif($lenght <= 0)
-    {
-        return "Use a number higher than 0";
-    }
-}?>
+<?php 
+    include __DIR__ . '/partials/functions.php';
+?>
 
 <!doctype html>
 <html lang="en">
@@ -66,7 +38,7 @@ function randomPassword($lenght) {
         </div>
         <div class="text-center">
             <h3>
-                <?php   echo "You've typed: $lenght"?>
+                <?php   echo "Lenght: $lenght"?>
             </h3>
             <h3>
                 <?php  echo randomPassword($lenght);?>
