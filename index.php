@@ -8,9 +8,6 @@ Milestone 2
 Verificato il corretto funzionamento del nostro codice, spostiamo la logica in un file functions.php che includeremo poi nella pagina principale
 Milestone 3 (BONUS)
 Invece di visualizzare la password nella index, effettuare un redirect ad una pagina dedicata che tramite $_SESSION recupererà la password da mostrare all’utente. -->
-<?php 
-    include __DIR__ . '/partials/functions.php';
-?>
 
 <!doctype html>
 <html lang="en">
@@ -28,21 +25,17 @@ Invece di visualizzare la password nella index, effettuare un redirect ad una pa
             <h1>
                 Password Generator X-2000
             </h1>
-            <div class="d-flex justify-content-center my-4">
-                <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="GET">
+            <p>
+                Create the ULTIMATE PASSWORD
+            </p>
+            <!-- form per inviare i dati inseriti alla pagina password.php, per poi essere portati alla pagina stessa -->
+            <div class="d-flex justify-content-center my-4 py-4">
+                <form action="partials/password.php" method="GET">
                     <label for="lenght"> Password's lenght desired </label>
                     <input type="text" name="lenght" id="lenght">
                     <input type="submit" name="submit" value="Generate">
                 </form>
             </div>
-        </div>
-        <div class="text-center">
-            <h3>
-                <?php   echo "Lenght: $lenght"?>
-            </h3>
-            <h3>
-                <?php  echo randomPassword($lenght);?>
-            </h3>
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
